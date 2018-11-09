@@ -18,6 +18,10 @@ download disini https://www.mongodb.com/products/compass
 
     npm install --save express ejs
 
+#### Membuat remote repository
+
+    github.com
+
 #### Membuat Main file "app.js"
 
 http://bit.ly/certificate-mediocademy
