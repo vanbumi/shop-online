@@ -73,3 +73,36 @@ Install linux & mac
 Install windows
 
     ???
+
+#### Koneksi database dengan mongoose
+
+Install mongoose:
+
+    npm install --save mongoose
+
+### 2. Materi 2
+
+Install mongoose :
+
+    npm install --save mongoose
+
+Kemudian require it :
+
+    var mongoose = require('mongoose');
+
+Connect syntax :
+
+    mongoose.connect('mongodb://localhost/shoponline');
+
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function() {
+      // we're connected!
+      console.log('Connected to MongoDB')
+    });
+
+Sekarang jalankan server :
+
+      nodemon app.js
+
+#### Membuat folder baru config
