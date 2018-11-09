@@ -106,3 +106,23 @@ Sekarang jalankan server :
       nodemon app.js
 
 #### Membuat folder baru config
+
+Update file database.js :
+
+    module.exports = {
+    	database: 'mongodb://localhost/shoponline'
+    }
+
+Kemudian require file config :
+
+    var config = require('./config/database');
+
+Update :
+
+    mongoose.connect('mongodb://localhost/shoponline');
+
+Menjadi :
+
+    mongoose.connect(config.database);
+
+### 3. Materi 3 Template Engine ejs

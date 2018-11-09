@@ -25,7 +25,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Setup index
 app.get("/", function(req, res) {
-  res.send("Welcome to index");
+  res.render("index", {
+    title: "Home"
+  });
 });
 
 var port = 3000;
