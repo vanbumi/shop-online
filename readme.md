@@ -126,3 +126,39 @@ Menjadi :
     mongoose.connect(config.database);
 
 ### 3. Materi 3 Template Engine ejs
+
+### 4. Materi 4 Route
+
+Membuat folder routes
+
+#### Membuat route pada Admin Area (backend)
+
+### Pengenalan MongoDB
+
+Strukture:
+
+Database
+
+Collection -> table
+
+Document -> row
+
+Terdiri dari pasangan : key-value
+
+{
+\_id: 123,
+title: 'Belajar Mongo',
+description: 'Mongo adalah database noSQL',
+comment: [
+{
+user: 'user1',
+message: 'Mongodb cool!'
+like: 0
+},
+{
+user: 'user2',
+message: 'Mongodb mantap!'
+like: 0
+}
+]
+}
