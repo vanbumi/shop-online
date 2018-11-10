@@ -2,6 +2,9 @@ var express = require("express");
 var path = require("path");
 var mongoose = require("mongoose");
 var config = require("./config/database");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+var expressValidator = require("express-validator");
 
 // DB Connection
 mongoose.connect(config.database);
@@ -30,6 +33,40 @@ var adminPages = require("./routes/admin_pages.js");
 // redirect
 app.use("/", pages);
 app.use("/admin/pages", adminPages);
+
+// setup middleware body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// setup session middleware
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  })
+);
+
+// setup sesion middleware
+app.use(
+  expressValidator({
+    errorFormatter: function(param, msg, value) {
+      var namespace = param.split("."),
+        root = namespace.shift(),
+        formParam = root;
+
+      while (namespace.length) {
+        formParam += "[" + namespace.shift() + "]";
+      }
+      return {
+        param: formParam,
+        msg: msg,
+        value: value
+      };
+    }
+  })
+);
 
 var port = 3000;
 app.listen(port, function() {

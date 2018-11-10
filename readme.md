@@ -162,3 +162,39 @@ like: 0
 }
 ]
 }
+
+### 5. Middleware
+
+    // setup middleware body parser
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+
+    // setup session middleware
+    app.use(
+    session({
+        secret: "keyboard cat",
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: true }
+    })
+    );
+
+    // setup sesion middleware
+    app.use(
+    expressValidator({
+        errorFormatter: function(param, msg, value) {
+        var namespace = param.split("."),
+            root = namespace.shift(),
+            formParam = root;
+
+        while (namespace.length) {
+            formParam += "[" + namespace.shift() + "]";
+        }
+        return {
+            param: formParam,
+            msg: msg,
+            value: value
+        };
+        }
+    })
+    );
